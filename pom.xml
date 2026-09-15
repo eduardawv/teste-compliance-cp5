@@ -5,31 +5,46 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>fiap.com</groupId>
-    <artifactId>teste</artifactId>
+    <artifactId>teste-compliance-cp5</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <selenium.version>4.48.0</selenium.version>
+        <junit.version>5.11.4</junit.version>
+        <surefire.version>3.5.2</surefire.version>
     </properties>
+
     <dependencies>
+        <!-- Selenium WebDriver: usado apenas nos testes -> scope test -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>4.48.0</version>
-            <scope>compile</scope>
+            <version>${selenium.version}</version>
+            <scope>test</scope>
         </dependency>
-        <!-- Source: https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+
+        <!-- Agregador JUnit 5: traz api + engine + params.
+             Sem o engine, o Maven compila mas nao executa nenhum teste. -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>6.1.3</version>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
 
-
-
+    <build>
+        <plugins>
+            <!-- Surefire 3.x e o que descobre e roda os testes JUnit 5 no 'mvn test' -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${surefire.version}</version>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
