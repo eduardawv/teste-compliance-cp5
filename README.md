@@ -59,4 +59,4 @@ Pela IDE: botão de execução ao lado da classe `Login` ou de cada `@Test`.
 
 ## Evidência de execução
 
-![Execução dos testes](docs/evidencia-execucao.png)
+![Execução dos testes](evidencia-execucao.png)
